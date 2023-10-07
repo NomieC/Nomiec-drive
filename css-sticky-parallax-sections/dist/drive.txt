@@ -1,0 +1,131 @@
+<div class="section" class="h-screen" style="color: #bcb7a4;">
+    <div id="image-container"><img src="{{ URL::to('/src/restaurant-HD2.jpeg')}}" alt=""></div>
+    <div id="content">
+
+        <div class="flex justify-evenly">
+            <div>
+                <h1>Freya Jayawardana</h1>
+                <p>"Gadis koleris yang suka berimajinasi, terangi harimu dengan senyuman karamelku. Halo aku Freya!". </p>
+            </div>
+            <img class="h-72 " src="{{ URL::to('/src/freya3.jpeg') }}" alt="">
+        </div>
+        <div class="mt-10 flex justify-evenly">
+            <img class="h-72 " src="{{ URL::to('/src/freya3.jpeg') }}" alt="">
+            <div>
+                <h1>Freya Jayawardana</h1>
+                <p>"Gadis koleris yang suka berimajinasi, terangi harimu dengan senyuman karamelku. Halo aku Freya!". </p>
+            </div>
+        </div>
+        <div class="flex justify-evenly">
+            <div>
+                <h1>Freya Jayawardana</h1>
+                <p>"Gadis koleris yang suka berimajinasi, terangi harimu dengan senyuman karamelku. Halo aku Freya!". </p>
+            </div>
+            <img class="h-72 " src="{{ URL::to('/src/freya3.jpeg') }}" alt="">
+        </div>
+        <div class="mt-10 flex justify-evenly">
+            <img class="h-72 " src="{{ URL::to('/src/freya3.jpeg') }}" alt="">
+            <div>
+                <h1>Freya Jayawardana</h1>
+                <p>"Gadis koleris yang suka berimajinasi, terangi harimu dengan senyuman karamelku. Halo aku Freya!". </p>
+            </div>
+        </div>
+        <div class="flex justify-evenly">
+            <div>
+                <h1>Freya Jayawardana</h1>
+                <p>"Gadis koleris yang suka berimajinasi, terangi harimu dengan senyuman karamelku. Halo aku Freya!". </p>
+            </div>
+            <img class="h-72 " src="{{ URL::to('/src/freya3.jpeg') }}" alt="">
+        </div>
+        <div class="mt-10 flex justify-evenly">
+            <img class="h-72 " src="{{ URL::to('/src/freya3.jpeg') }}" alt="">
+            <div>
+                <h1>Freya Jayawardana</h1>
+                <p>"Gadis koleris yang suka berimajinasi, terangi harimu dengan senyuman karamelku. Halo aku Freya!". </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<style>
+    :root {
+        --scale: 0.1;
+    }
+
+    @media (prefers-reduced-motion) {
+        :root {
+            --scale: 0;
+        }
+    }
+
+    #section {
+        transform-origin: center top;
+        transform: scaleY(calc(1 - var(--scale)));
+        /* penting */
+    }
+
+    #section>* {
+        transform-origin: center top;
+        transform: scaleY(calc(1 / (1 - var(--scale))));
+        /* penting */
+    }
+
+    #image-container {
+        position: sticky;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -2;
+    }
+
+    #image-container img {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    #image-container::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to bottom,
+                hsla(5, 15%, 5%, 0) 0%,
+                hsla(5, 15%, 5%, 0.013) 8.1%,
+                hsla(5, 15%, 5%, 0.049) 15.5%,
+                hsla(5, 15%, 5%, 0.104) 22.5%,
+                hsla(5, 15%, 5%, 0.175) 29%,
+                hsla(5, 15%, 5%, 0.259) 35.3%,
+                hsla(5, 15%, 5%, 0.352) 41.2%,
+                hsla(5, 15%, 5%, 0.45) 47.1%,
+                hsla(5, 15%, 5%, 0.55) 52.9%,
+                hsla(5, 15%, 5%, 0.648) 58.8%,
+                hsla(5, 15%, 5%, 0.741) 64.7%,
+                hsla(5, 15%, 5%, 0.825) 71%,
+                hsla(5, 15%, 5%, 0.896) 77.5%,
+                hsla(5, 15%, 5%, 0.951) 84.5%,
+                hsla(5, 15%, 5%, 0.987) 91.9%,
+                hsl(5, 15%, 5%) 100%);
+    }
+
+    @-webkit-keyframes fadein {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadein {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
