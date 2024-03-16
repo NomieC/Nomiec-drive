@@ -1,29 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int main()
-{
-    int i, j;
-    int flag = 0;
-        // for(i = 0; i < 100; i++){
-        //     for(j = 2; j < 10; j++){
-        //         if(i % j == 0){
-        //             flag = 1;
-        //             if(flag == 1)
-        //                 break;
-        //         }
-        //         printf("%d ", i);
-        //     } 
-        // }
-    
-
-        for ( i = 0; i < 1000; i++)
-        {
-            if (i%2!=0&&i%3!=0&&i%5!=0&&i%7!=0)
-            {
-                printf("%d ",i);
-            }
-            
+int main(int argc, char *argv[]) {
+        if(argc != 3) {
+                perror("argumen hanya boleh tepat 2 buah!");
+                exit(-1);
         }
+        char  str[1000];
+        sprintf(str, "cp -r %s %s", argv[1], argv[2]);
         
-    return 0;
+        if(system(str)) {
+                printf("gagal");
+        } else {
+                printf("berhasil menyalin file %s ke %s", argv[1], argv[2]);
+        }
+        return 0;
+
 }
+
