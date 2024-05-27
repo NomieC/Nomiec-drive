@@ -1,0 +1,7 @@
+1. Terdapat beberapa kesalah dari snippet code nomor 1:
+- kesalahan declare pointer yang seharusnya int *array = (int *)malloc(10 * sizeof(int *));
+- kesalahan looping yang awalnya i > 10 menjadi i < 10
+- kesalahan alokasi array[i] yang menjadi array[i] = (int *)malloc(10 * sizeof(int))
+- kesalahan declare dari charhalo = "" menjadi char *halo
+- kesalahan fprintf menjadi fprintf(fp, "ini line %d\n", i + 1)
+
