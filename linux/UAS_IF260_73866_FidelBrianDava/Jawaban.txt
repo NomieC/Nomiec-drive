@@ -1,0 +1,47 @@
+1. Berdasarkan laporan Valgrind, lokasi kebocoran memori dapat diidentifikasi dengan memeriksa fungsi-fungsi yang mengalokasikan memori tetapi tidak membebaskannya. 
+Dalam kasus ini, fungsi create_dynamic_memory_leak() adalah sumber kebocoran memori yang pasti, karena memanggil malloc() untuk mengalokasikan memori tetapi tidak membebaskannya dengan free(). 
+Fungsi access_uninitialized_memory() juga dapat menyebabkan masalah, karena mengakses memori yang tidak diinisialisasi.
+Untuk menganalisis laporan Valgrind, Andi dapat menggunakan cara berikut:
+
+LEAK SUMMARY:
+definitely lost: 1024 bytes in 1 blocks
+indirectly lost: 2048 bytes in 2 blocks
+possibly lost: 0 bytes in 0 blocks
+still reachable: 4096 bytes in 1 blocks
+
+Cari tahu jumlah dan ukuran kebocoran memori yang pasti (definitely lost).
+definitely lost: 1024 bytes in 1 blocks
+lost...
+
+Cari tahu jumlah dan ukuran kebocoran memori yang tidak langsung (indirectly lost).
+indirectly lost: 2048 bytes in 2 blocks
+memori yang "indirectly lost" adalah berasal dari memori yang "definitely lost" tidak dibebaskan.
+
+Cari tahu apakah ada kebocoran memori yang mungkin (possibly lost).
+possibly lost: 0 bytes in 0 blocks
+tidak ada kebocoran memori
+
+Cari tahu apakah ada memori yang masih dapat diakses (still reachable).
+still reachable: 4096 bytes in 1 blocks
+tidak seburuk "definitely lost" atau "indirectly lost", tetapi masih layak diselidiki untuk memastikan bahwa memori digunakan dengan benar.
+
+
+2. Untuk memperbaiki kebocoran memori, andi dapat memodifikasi fungsi create_dynamic_memory_leak() dengan menambahkan pemanggilan free():
+void create_dynamic_memory_leak() {
+ int *ptr = (int *)malloc(sizeof(int));
+ free(ptr); // Membebaskan memori yang dialokasikan
+}
+Dengan menambahkan free(ptr), memori yang dialokasikan dengan malloc() akan dibebaskan setelah digunakan, sehingga mencegah kebocoran memori.
+kode tersebut masih memiliki masalah akses ke memori yang tidak diinisialisasi di fungsi access_uninitialized_memory(). Untuk memperbaiki masalah ini, andi dapat menginisialisasi variabel ptr dengan nilai NULL.
+
+3. Untuk mencegah kebocoran memori di masa depan, andi dapat menerapkan beberapa strategi dan teknik pemrograman, seperti:
+Selalu membebaskan memori yang dialokasikan dengan malloc(), calloc(), atau realloc() setelah tidak lagi diperlukan.
+Memeriksa kembali kode andi untuk memastikan bahwa tidak ada akses ke memori yang tidak diinisialisasi.
+Menggunakan alat-alat analisis memori, seperti Valgrind, untuk mendeteksi dan memperbaiki kebocoran memori.
+Menggunakan teknik-teknik pemrograman yang aman, seperti penggunaan smart pointer atau garbage collector, untuk mengelola memori secara otomatis.
+
+====contoh kode ada pada file contoh kode====
+Pada kode tersebut, terdapat beberapa contoh teknik pemrograman yang aman untuk mengelola memori, seperti:
+Penggunaan malloc() dan free() untuk mengalokasikan dan membebaskan memori secara manual.
+Penggunaan fclose() untuk membebaskan sumber daya file setelah digunakan.
+Penggunaan switch untuk menghandle input user dan menghindari akses ke memori yang tidak diinisialisasi.
